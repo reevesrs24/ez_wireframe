@@ -44,7 +44,7 @@ def user():
     """
     return dict(form=auth())
 
-@auth.requires_login('login')
+#@auth.requires_login('login')
 def design():
     return dict(title=T('Design'))
 

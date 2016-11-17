@@ -29,8 +29,56 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
+
+
+
+<div style="float: right; margin-top: 12%; margin-bottom: 10%; width: 25%;">
+    <button type="button" class="btn btn-primary" id="prev-btn" style="margin:auto; display:block;">
+        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+    </button>
+
+    <section class="slider" id="wireframe-slider" style="padding: 2em;">
+            <div>
+                <img src="http://placehold.it/350x300?text=1">
+            </div>
+            <div>
+                <img src="http://placehold.it/350x300?text=2">
+            </div>
+            <div>
+                <img src="http://placehold.it/350x300?text=3">
+            </div>
+            <div>
+                <img src="http://placehold.it/350x300?text=4">
+            </div>
+            <div>
+                <img src="http://placehold.it/350x300?text=5">
+            </div>
+            <div>
+                <img src="http://placehold.it/350x300?text=6">
+            </div>
+    </section>
+    <button type="button" class="btn btn-primary" id="next-btn" style="margin:auto; display:block;">
+        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+    </button>
+</div>
+
 </body>
 
+<script type="text/javascript">
 
+    $('.slider').slick({
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        cssEase: 'linear',
+        vertical: true,
+        prevArrow: '#prev-btn',
+        nextArrow: '#next-btn'
+    });
+
+
+
+
+</script>
 {{include 'footer.html'}}
 
