@@ -3,7 +3,11 @@
 </head>
 
 <body id="page-top">
-
+{{block head}}
+<script>
+    var get_wireframe_images_url = "{{=URL('api', 'get_wireframe_images', user_signature=True)}}";
+</script>
+{{end}}
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top" style="background-color: #F05F40">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -31,35 +35,38 @@
 </nav>
 
 
+<div>
+    <div style="float: right; margin-top: 12%; margin-bottom: 10%; width: 25%;">
+        <button   type="button" class="btn btn-primary" id="prev-btn" style="margin:auto; display:block;">
+            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+        </button>
 
-<div style="float: right; margin-top: 12%; margin-bottom: 10%; width: 25%;">
-    <button type="button" class="btn btn-primary" id="prev-btn" style="margin:auto; display:block;">
-        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-    </button>
+        <section class="slider" id="wireframe-slider" style="padding: 2em;">
 
-    <section class="slider" id="wireframe-slider" style="padding: 2em;">
-            <div>
-                <img src="http://placehold.it/350x300?text=1">
-            </div>
-            <div>
-                <img src="http://placehold.it/350x300?text=2">
-            </div>
-            <div>
-                <img src="http://placehold.it/350x300?text=3">
-            </div>
-            <div>
-                <img src="http://placehold.it/350x300?text=4">
-            </div>
-            <div>
-                <img src="http://placehold.it/350x300?text=5">
-            </div>
-            <div>
-                <img src="http://placehold.it/350x300?text=6">
-            </div>
-    </section>
-    <button type="button" class="btn btn-primary" id="next-btn" style="margin:auto; display:block;">
-        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-    </button>
+                <div>
+                    <img src="http://placehold.it/350x300?text=1">
+                </div>
+                <div>
+                    <img src="http://placehold.it/350x300?text=2">
+                </div>
+                <div>
+                    <img src="http://placehold.it/350x300?text=3">
+                </div>
+                <div>
+                    <img src="http://placehold.it/350x300?text=4">
+                </div>
+                <div>
+                    <img src="http://placehold.it/350x300?text=5">
+                </div>
+                <div>
+                    <img src="http://placehold.it/350x300?text=6">
+                </div>
+
+        </section>
+        <button type="button" class="btn btn-primary" id="next-btn" style="margin:auto; display:block;">
+            <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+        </button>
+    </div>
 </div>
 
 </body>
