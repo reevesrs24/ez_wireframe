@@ -42,43 +42,16 @@
             <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
         </button>
         <div style="height: 300px; width: 175px">
-            <img :src="images[currentNumber]" style="height: 100%; width: 100%"/>
+            <img :src="path + wireframes[currentNumber].wireframe_name" style="height: 100%; width: 100%"/>
         </div>
         <button  v-on:click="next" type="button" class="btn btn-primary" id="next-btn"
                  style="margin-left: 20%; margin-top: 10%; display:block;">
             <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
         </button>
-        <!-- Jquery Slick
-        <button   type="button" class="btn btn-primary" id="prev-btn" style="margin:auto; display:block;">
-            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-        </button>
-        <section class="slider" id="wireframe-slider" style="padding: 2em;">
-                    <div>
-                        <img src="https://www.google.com.hk/images/logo.png'">
-                    </div>
-        </section>
-
-        -->
     </div>
 </div>
 
 </body>
 
-<script type="text/javascript">
-
-    $('.slider').slick({
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        cssEase: 'linear',
-        vertical: true,
-        prevArrow: '#prev-btn',
-        nextArrow: '#next-btn'
-    });
-
-
-
-
-</script>
 {{include 'footer.html'}}
 

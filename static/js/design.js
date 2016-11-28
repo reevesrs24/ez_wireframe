@@ -33,7 +33,7 @@ var app = function() {
 
     self.next = function() {
 
-        if (self.vue.currentNumber < self.vue.images.length - 1)
+        if (self.vue.currentNumber < self.vue.wireframes.length - 1)
             self.vue.currentNumber++;
     };
 
@@ -50,8 +50,8 @@ var app = function() {
         data: {
             platform: "",
             wireframes: [],
-            images: ['../static/images/wireframes/Blank.png', '../static/images/wireframes/Basic.png', '../static/images/wireframes/Blank.png', '../static/images/wireframes/Blank.png'],
-            currentNumber: 0
+            currentNumber: 0,
+            path: "../static/images/wireframes/"
         },
         methods: {
             get_wireframe_images: self.get_wireframe_images,
@@ -61,6 +61,9 @@ var app = function() {
         }
 
     });
+
+    //Load Images on when page is rendered
+    self.get_wireframe_images();
 
     return self;
 };
