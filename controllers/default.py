@@ -48,7 +48,9 @@ def user():
 def design():
     return dict(title=T('Design'))
 
-
+def appadmin():
+	return dict(title=T('Design'))
+	
 @cache.action()
 def download():
     """
