@@ -36,36 +36,29 @@
 
 
 <div>
-    <div style="float: right; margin-top: 12%; margin-bottom: 10%; width: 25%;">
+    <div id="vue-div" style="float: right; margin-top: 12%; margin-bottom: 10%; margin-right: -5%; width: 25%;">
+        <button    v-on:click="prev" type="button" class="btn btn-primary" id="prev-btn"
+                   style="margin-left: 20%; margin-bottom: 10%; display:block;">
+            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+        </button>
+        <div style="height: 300px; width: 175px">
+            <img :src="images[currentNumber]" style="height: 100%; width: 100%"/>
+        </div>
+        <button  v-on:click="next" type="button" class="btn btn-primary" id="next-btn"
+                 style="margin-left: 20%; margin-top: 10%; display:block;">
+            <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+        </button>
+        <!-- Jquery Slick
         <button   type="button" class="btn btn-primary" id="prev-btn" style="margin:auto; display:block;">
             <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
         </button>
-
         <section class="slider" id="wireframe-slider" style="padding: 2em;">
-
-                <div>
-                    <img src="http://placehold.it/350x300?text=1">
-                </div>
-                <div>
-                    <img src="http://placehold.it/350x300?text=2">
-                </div>
-                <div>
-                    <img src="http://placehold.it/350x300?text=3">
-                </div>
-                <div>
-                    <img src="http://placehold.it/350x300?text=4">
-                </div>
-                <div>
-                    <img src="http://placehold.it/350x300?text=5">
-                </div>
-                <div>
-                    <img src="http://placehold.it/350x300?text=6">
-                </div>
-
+                    <div>
+                        <img src="https://www.google.com.hk/images/logo.png'">
+                    </div>
         </section>
-        <button type="button" class="btn btn-primary" id="next-btn" style="margin:auto; display:block;">
-            <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-        </button>
+
+        -->
     </div>
 </div>
 

@@ -25,12 +25,22 @@ var app = function() {
             data: {platform: ""},
             dataType: 'json',
             success: function (json) {
-                self.wireframes = json['wireframes'];
+                self.vue.wireframes = json['wireframes'];
             }
         });
 
     };
 
+    self.next = function() {
+
+        if (self.vue.currentNumber < self.vue.images.length - 1)
+            self.vue.currentNumber++;
+    };
+
+    self.prev = function() {
+        if (self.vue.currentNumber > 0)
+            self.vue.currentNumber--;
+    };
 
     // Complete as needed.
     self.vue = new Vue({
@@ -39,10 +49,14 @@ var app = function() {
         unsafeDelimiters: ['!{', '}'],
         data: {
             platform: "",
-            wireframes: []
+            wireframes: [],
+            images: ['../static/images/wireframes/Blank.png', '../static/images/wireframes/Basic.png', '../static/images/wireframes/Blank.png', '../static/images/wireframes/Blank.png'],
+            currentNumber: 0
         },
         methods: {
-            get_wireframe_images: self.get_wireframe_images
+            get_wireframe_images: self.get_wireframe_images,
+            next: self.next,
+            prev: self.prev
 
         }
 
