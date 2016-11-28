@@ -252,11 +252,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PIP\Documents\web2py\web2py\applications\ez_wireframe\static\images\wireframes" />
       <recent name="C:\Users\PIP\Documents\web2py\web2py\applications\ez_wireframe\static\js" />
       <recent name="C:\Users\PIP\Documents\web2py\web2py\applications\ez_wireframe\static\css" />
       <recent name="C:\Users\PIP\Documents\web2py\web2py\applications\ez_wireframe\static\vendor" />
       <recent name="C:\Users\PIP\Documents\web2py\web2py\applications\ez_wireframe\static\img" />
-      <recent name="C:\Users\PIP\Documents\web2py\web2py\applications\ez_wireframe\static\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\PIP\Documents\web2py\web2py\applications\ez_wireframe\static\js" />
@@ -338,15 +338,15 @@
       <workItem from="1479356549625" duration="9924000" />
       <workItem from="1480297233378" duration="198000" />
       <workItem from="1480297515005" duration="509000" />
-      <workItem from="1480306785023" duration="764000" />
+      <workItem from="1480306785023" duration="1372000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26280000" />
+    <option name="totallyTimeSpent" value="26888000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29425114" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
