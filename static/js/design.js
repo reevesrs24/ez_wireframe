@@ -35,6 +35,15 @@ var app = function() {
             self.vue.currentNumber--;
     };
 
+    self.toggle_list = function() {
+        self.vue.toggle_search_bool = false;
+        self.vue.toggle_list_bool = !self.vue.toggle_list_bool;
+    };
+
+    self.toggle_Search = function() {
+        self.vue.toggle_list_bool = false;
+        self.vue.toggle_search_bool = !self.vue.toggle_search_bool;
+    };
 
     // Complete as needed.
     self.vue = new Vue({
@@ -46,12 +55,16 @@ var app = function() {
             currentNumber: 0,
             path: "../static/images/wireframes/",
             platform: "mobile",
-            name: "TST"
+            toggle_search_bool: false,
+            toggle_list_bool: false
         },
         methods: {
             get_wireframe_images: self.get_wireframe_images,
             next: self.next,
-            prev: self.prev
+            prev: self.prev,
+            toggle_list: self.toggle_list,
+            toggle_search: self.toggle_Search
+
 
         }
 
