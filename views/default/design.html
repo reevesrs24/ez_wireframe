@@ -42,6 +42,7 @@
           <option>web</option>
           <option>mobile + web</option>
         </select>
+
         <button v-on:click="prev" type="button" class="btn btn-primary" id="prev-btn"
                    style="margin-left: 20%; margin-bottom: 10%; display:block;">
             <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
@@ -50,10 +51,14 @@
             <img  v-if="wireframes[currentNumber].platform == 'mobile'" :src="path + wireframes[currentNumber].wireframe_name"
                   style="height: 100%; width: 100%"/>
              <img  v-if="wireframes[currentNumber].platform == 'web'" :src="path + wireframes[currentNumber].wireframe_name"
-                  style="margin-left: -15%; margin-top: 10%; height: 75%; width: 150%"/>
+                  style="margin-left: -20%; margin-top: 10%; height: 75%; width: 150%"/>
+            <h4  v-if="wireframes[currentNumber].platform == 'web'"
+                 style="text-align: center;" v-html="wireframes[currentNumber].name_readable"></h4>
+            <h4  v-if="wireframes[currentNumber].platform == 'mobile'"
+                 style="text-align: center;" v-html="wireframes[currentNumber].name_readable"></h4>
         </div>
         <button v-on:click="next" type="button" class="btn btn-primary" id="next-btn"
-                 style="margin-left: 20%; margin-top: 10%; display:block;">
+                 style="margin-left: 20%; margin-top: 15%; display:block;">
             <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
         </button>
     </div>

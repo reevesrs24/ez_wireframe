@@ -18,6 +18,7 @@ var app = function() {
             dataType: 'json',
             success: function (json) {
                 self.vue.wireframes = json['wireframes'];
+                self.vue.currentNumber = 0;
             }
         });
 
@@ -41,11 +42,11 @@ var app = function() {
         delimiters: ['${', '}'],
         unsafeDelimiters: ['!{', '}'],
         data: {
-            platform: "",
             wireframes: [],
             currentNumber: 0,
             path: "../static/images/wireframes/",
-            platform: "mobile"
+            platform: "mobile",
+            name: "TST"
         },
         methods: {
             get_wireframe_images: self.get_wireframe_images,
