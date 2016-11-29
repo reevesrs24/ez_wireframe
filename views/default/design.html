@@ -36,15 +36,23 @@
 
 
 <div>
-    <div id="vue-div" style="float: right; margin-top: 12%; margin-bottom: 10%; margin-right: -5%; width: 25%;">
-        <button    v-on:click="prev" type="button" class="btn btn-primary" id="prev-btn"
+    <div id="vue-div" style="float: right; margin-top: 8%; margin-bottom: 10%; margin-right: -5%; width: 25%;">
+        <select class="form-control custom" v-model="platform" v-on:change="get_wireframe_images" style="margin-left: 2%; padding-left: 5px; height: 25px">
+          <option>mobile</option>
+          <option>web</option>
+          <option>mobile + web</option>
+        </select>
+        <button v-on:click="prev" type="button" class="btn btn-primary" id="prev-btn"
                    style="margin-left: 20%; margin-bottom: 10%; display:block;">
             <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
         </button>
         <div style="height: 300px; width: 175px">
-            <img :src="path + wireframes[currentNumber].wireframe_name" style="height: 100%; width: 100%"/>
+            <img  v-if="wireframes[currentNumber].platform == 'mobile'" :src="path + wireframes[currentNumber].wireframe_name"
+                  style="height: 100%; width: 100%"/>
+             <img  v-if="wireframes[currentNumber].platform == 'web'" :src="path + wireframes[currentNumber].wireframe_name"
+                  style="margin-left: -15%; margin-top: 10%; height: 75%; width: 150%"/>
         </div>
-        <button  v-on:click="next" type="button" class="btn btn-primary" id="next-btn"
+        <button v-on:click="next" type="button" class="btn btn-primary" id="next-btn"
                  style="margin-left: 20%; margin-top: 10%; display:block;">
             <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
         </button>

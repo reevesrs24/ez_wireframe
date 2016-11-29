@@ -7,22 +7,14 @@ var app = function() {
 
     Vue.config.silent = false; // show all warnings
 
-/*
-    self.get_user_email = function() {
-        $.get(get_email_url, function(json) {
-            console.log(json['email']);
-            self.vue.user_email = json['email'];
-
-        });
-    };
-*/
 
     self.get_wireframe_images = function() {
 
+        console.log(self.vue.platform);
         $.ajax({
             type: "POST",
             url: get_wireframe_images_url,
-            data: {platform: ""},
+            data: {platform: self.vue.platform},
             dataType: 'json',
             success: function (json) {
                 self.vue.wireframes = json['wireframes'];
@@ -42,6 +34,7 @@ var app = function() {
             self.vue.currentNumber--;
     };
 
+
     // Complete as needed.
     self.vue = new Vue({
         el: "#vue-div",
@@ -51,7 +44,8 @@ var app = function() {
             platform: "",
             wireframes: [],
             currentNumber: 0,
-            path: "../static/images/wireframes/"
+            path: "../static/images/wireframes/",
+            platform: "mobile"
         },
         methods: {
             get_wireframe_images: self.get_wireframe_images,
