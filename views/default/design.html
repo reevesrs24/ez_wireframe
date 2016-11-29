@@ -38,13 +38,11 @@
 <div>
     <div id="vue-div" style="float: right; margin-top: 5%; margin-bottom: 10%; margin-right: -5%; width: 25%;">
 
-        <div>
-            <button type="button" v-on:click="toggle_list" class="btn btn-default" style="outline:none; margin-left: 13%"aria-label="Left Align">
-                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-            </button>
-            <button type="button" v-on:click="toggle_search" class="btn btn-default" style="outline:none" aria-label="Left Align">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            </button>
+        <div style="margin-top: 3%; margin-bottom: 5%">
+            <span v-on:click="toggle_list" class="glyphicon glyphicon-list-alt" style="cursor: pointer; margin-left: 10%"
+                  aria-hidden="true"></span>
+            <span v-on:click="toggle_search" class="glyphicon glyphicon-search" style="cursor: pointer; margin-left: 20%"
+                  aria-hidden="true"></span>
         </div>
         <div v-if="toggle_list_bool">
             <select class="form-control custom" v-model="platform" v-on:change="get_wireframe_images"
@@ -54,16 +52,18 @@
               <option>mobile + web</option>
             </select>
         </div>
-        <div v-if="toggle_search_bool">
-           <div class="form-group" style="width: 50%;">
-                <input type="text" class="form-control" style="padding: 5px; height: 25%" placeholder="Search for...">
-                <span class="input-group-btn">
-                    <button class="btn btn-secondary" style="outline:none"type="button">Go!</button>
-                </span>
+        <div v-if="toggle_search_bool" style="width: 60%; margin-bottom: 3%">
+           <div>
+                <div class="input-group" style="">
+                    <input type="text" class="form-control" style="padding: 5px; height: 35px">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary btn-sm" style="margin-left: 5%; outline:none;">Go!</button>
+                    </span>
+                </div>
             </div><!-- /input-group -->
         </div>
         <button v-on:click="prev" type="button" class="btn btn-primary" id="prev-btn"
-                   style="outline:none; margin-left: 20%; margin-bottom: 10%; display:block;">
+                   style="outline:none; margin-left: 20%; margin-bottom: 7%; display:block;">
             <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
         </button>
         <div style="height: 300px; width: 175px">
