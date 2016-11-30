@@ -61,7 +61,7 @@
                            style="padding: 5px; height: 35px">
                     <datalist id="wireframe-list" >
                         <span v-for="w in wireframe_hints">
-                            <option value="w.name">
+                            <option v-bind:value="w[5]"></option>
                         </span>
                     </datalist>
                     <span class="input-group-btn">
