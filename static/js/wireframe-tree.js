@@ -44,7 +44,7 @@ console.log(treeJSON);
     var root;
 
     // size of the diagram
-    var viewerWidth = $(document).width() / 1.3;
+    var viewerWidth = $(document).width() / 1.35;
     var viewerHeight = $(document).height() / 1.25;
 
     var tree = d3.layout.tree()
