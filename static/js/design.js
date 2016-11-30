@@ -40,18 +40,19 @@ var app = function() {
     };
 
     self.toggle_Search = function() {
+        self.vue.search_wireframe = "";
         self.vue.toggle_list_bool = false;
         self.vue.toggle_search_bool = !self.vue.toggle_search_bool;
     };
 
     self.update_wireframe_image = function() {
 
-        /*
+    /*
         var myNode = document.getElementById("wireframe-list");
-        while (myNode.childElementCount > 0) {
+        while (myNode.childElementCount > 5) {
             myNode.removeChild(myNode.lastElementChild);
         }
-        */
+    */
 
         console.log(self.vue.search_wireframe);
         $.ajax({
