@@ -6,6 +6,7 @@
 {{block head}}
 <script>
     var get_wireframe_images_url = "{{=URL('api', 'get_wireframe_images', user_signature=True)}}";
+    var search_wireframe_images_url = "{{=URL('api', 'update_wireframe_image', user_signature=True)}}";
 </script>
 {{end}}
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top" style="background-color: #F05F40">
@@ -55,7 +56,14 @@
         <div v-if="toggle_search_bool" style="width: 60%; margin-bottom: 3%">
            <div>
                 <div class="input-group" style="">
-                    <input type="text" class="form-control" style="padding: 5px; height: 35px">
+                    <input type="text" list="wireframe-list" v-model="search_wireframe" v-on:keyup="update_wireframe_image"
+                           class="form-control" placeholder="search.."
+                           style="padding: 5px; height: 35px">
+                    <datalist id="wireframe-list" >
+                        <span v-for="w in wireframe_hints">
+                            <option value="w.name">
+                        </span>
+                    </datalist>
                     <span class="input-group-btn">
                         <button class="btn btn-primary btn-sm" style="margin-left: 5%; outline:none;">Go!</button>
                     </span>
@@ -67,10 +75,10 @@
             <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
         </button>
         <div style="height: 300px; width: 175px">
-            <img  v-if="wireframes[currentNumber].platform == 'mobile'" :src="path + wireframes[currentNumber].wireframe_name"
-                  style="height: 100%; width: 100%"/>
-            <img  v-if="wireframes[currentNumber].platform == 'web'" :src="path + wireframes[currentNumber].wireframe_name"
-                  style="margin-left: -20%; margin-top: 10%; height: 75%; width: 150%"/>
+            <img  v-if="wireframes[currentNumber].platform == 'mobile'"
+                  :src="path + wireframes[currentNumber].wireframe_name" style="height: 100%; width: 100%"/>
+            <img  v-if="wireframes[currentNumber].platform == 'web'"
+                  :src="path + wireframes[currentNumber].wireframe_name" style="margin-left: -20%; margin-top: 10%; height: 75%; width: 150%"/>
             <h4  v-if="wireframes[currentNumber].platform == 'web'"
 
                  style="text-align: center;" v-html="wireframes[currentNumber].name_readable"></h4>

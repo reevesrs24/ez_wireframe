@@ -10,7 +10,6 @@ var app = function() {
 
     self.get_wireframe_images = function() {
 
-        console.log(self.vue.platform);
         $.ajax({
             type: "POST",
             url: get_wireframe_images_url,
@@ -45,6 +44,21 @@ var app = function() {
         self.vue.toggle_search_bool = !self.vue.toggle_search_bool;
     };
 
+    self.update_wireframe_image = function() {
+
+        console.log(self.vue.search_wireframe);
+        $.ajax({
+            type: "POST",
+            url: search_wireframe_images_url,
+            data: {search_wireframe: self.vue.search_wireframe},
+            dataType: 'json',
+            success: function (json) {
+                self.vue.wireframe_hints = json['wireframes'];
+                self.vue.currentNumber = 0;
+            }
+        });
+    };
+
     // Complete as needed.
     self.vue = new Vue({
         el: "#vue-div",
@@ -56,14 +70,18 @@ var app = function() {
             path: "../static/images/wireframes/",
             platform: "mobile",
             toggle_search_bool: false,
-            toggle_list_bool: false
+            toggle_list_bool: false,
+            search_wireframe: "",
+            wireframe_hints: []
+
         },
         methods: {
             get_wireframe_images: self.get_wireframe_images,
             next: self.next,
             prev: self.prev,
             toggle_list: self.toggle_list,
-            toggle_search: self.toggle_Search
+            toggle_search: self.toggle_Search,
+            update_wireframe_image: self.update_wireframe_image
 
 
         }
