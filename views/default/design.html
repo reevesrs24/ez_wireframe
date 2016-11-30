@@ -7,6 +7,7 @@
 <script>
     var get_wireframe_images_url = "{{=URL('api', 'get_wireframe_images', user_signature=True)}}";
     var search_wireframe_images_url = "{{=URL('api', 'update_wireframe_image', user_signature=True)}}";
+    var get_wireframe_by_name_url = "{{=URL('api', 'get_wireframe_by_name', user_signature=True)}}";
 </script>
 {{end}}
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top" style="background-color: #F05F40">
@@ -65,7 +66,7 @@
                         </span>
                     </datalist>
                     <span class="input-group-btn">
-                        <button class="btn btn-primary btn-sm" style="margin-left: 5%; outline:none;">Go!</button>
+                        <button class="btn btn-primary btn-sm" v-on:click="get_wireframe_by_name" style="margin-left: 5%; outline:none;">Go!</button>
                     </span>
                 </div>
             </div><!-- /input-group -->

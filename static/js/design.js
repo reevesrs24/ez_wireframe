@@ -46,6 +46,13 @@ var app = function() {
 
     self.update_wireframe_image = function() {
 
+        /*
+        var myNode = document.getElementById("wireframe-list");
+        while (myNode.childElementCount > 0) {
+            myNode.removeChild(myNode.lastElementChild);
+        }
+        */
+
         console.log(self.vue.search_wireframe);
         $.ajax({
             type: "POST",
@@ -54,6 +61,20 @@ var app = function() {
             dataType: 'json',
             success: function (json) {
                 self.vue.wireframe_hints = json['wireframes'];
+                self.vue.currentNumber = 0;
+            }
+        });
+    };
+
+    self.get_wireframe_by_name = function() {
+
+        $.ajax({
+            type: "POST",
+            url: get_wireframe_by_name_url,
+            data: {wireframe_name: self.vue.search_wireframe},
+            dataType: 'json',
+            success: function (json) {
+                self.vue.wireframes = json['wireframes'];
                 self.vue.currentNumber = 0;
             }
         });
@@ -81,7 +102,8 @@ var app = function() {
             prev: self.prev,
             toggle_list: self.toggle_list,
             toggle_search: self.toggle_Search,
-            update_wireframe_image: self.update_wireframe_image
+            update_wireframe_image: self.update_wireframe_image,
+            get_wireframe_by_name: self.get_wireframe_by_name
 
 
         }

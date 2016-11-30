@@ -26,3 +26,13 @@ def update_wireframe_image():
         return 'None'
     else:
         return response.json(dict(wireframes=wireframes))
+
+def get_wireframe_by_name():
+
+
+    wireframes = db(db.wireframes.name_readable == request.vars.wireframe_name).select()
+
+    if wireframes is None:
+        return 'None'
+    else:
+        return response.json(dict(wireframes=wireframes))
