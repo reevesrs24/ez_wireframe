@@ -1,11 +1,12 @@
+/*
 .node, .link {
     cursor: pointer;
   }
-
+*/
   .overlay{
       background-color:#EEE;
   }
-
+/*
   .node circle {
     fill: #fff;
     stroke: steelblue;
