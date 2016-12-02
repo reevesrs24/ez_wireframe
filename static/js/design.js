@@ -55,7 +55,7 @@ function renderTree() {
                 .append("g")
                 .attr("class", "node")
                 .attr("transform", function (d) {
-                    return "translate(" + d.y + "," + d.x + ")";
+                    return "translate(" + (d.y +100) + "," + (d.x + 100) + ")";
                 });
 
             node.append("circle")
@@ -68,10 +68,9 @@ function renderTree() {
                     // this - the `<rect>` that was clicked
                     if (d3.select(this).attr("fill") == "steelblue") {
                         d3.selectAll(".node").selectAll("circle").attr("fill", "steelblue");
-                        d3.select(this).attr("fill", "red");
+                        d3.select(this).attr("fill", "#F05F40");
                         nodeName = d.name;
                         nodeId = d.id;
-
                     }
                     else {
                         d3.select(this).attr("fill", "steelblue");
@@ -100,7 +99,7 @@ function renderTree() {
 
             var diagonal = d3.svg.diagonal()
                 .projection(function (d) {
-                    return [d.y, d.x];
+                    return [d.y + 100, d.x + 100];
                 });
 
             canvas.selectAll(".link")
@@ -265,6 +264,12 @@ var app = function() {
         }
     };
 
+
+    self.highlight = function() {
+        console.log("TEST");
+        this.isActive = !this.isActive;
+    };
+
     // Complete as needed.
     self.vue = new Vue({
         el: "#vue-div",
@@ -278,7 +283,9 @@ var app = function() {
             toggle_search_bool: false,
             toggle_list_bool: false,
             search_wireframe: "",
-            wireframe_hints: []
+            wireframe_hints: [],
+            isActive: false
+
 
         },
         methods: {
@@ -289,7 +296,8 @@ var app = function() {
             toggle_search: self.toggle_Search,
             update_wireframe_image: self.update_wireframe_image,
             get_wireframe_by_name: self.get_wireframe_by_name,
-            add_element_to_tree: self.add_element_to_tree
+            add_element_to_tree: self.add_element_to_tree,
+            highlight: self.highlight
 
 
         }

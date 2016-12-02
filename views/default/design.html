@@ -78,7 +78,8 @@
                    style="outline:none; margin-left: 20%; margin-bottom: 7%; display:block;">
             <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
         </button>
-        <div v-on:dblclick="add_element_to_tree" style="height: 300px; width: 175px">
+        <div v-on:dblclick="add_element_to_tree" v-bind:class="{ highlight: isActive }"   v-on:click="highlight"
+             style="height: 300px; width: 175px">
             <img  v-if="wireframes[currentNumber].platform == 'mobile'"
                   :src="path + wireframes[currentNumber].wireframe_name" style="height: 100%; width: 100%"/>
             <img  v-if="wireframes[currentNumber].platform == 'web'"
