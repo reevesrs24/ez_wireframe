@@ -147,6 +147,8 @@ var app = function() {
             }
         });
 
+    self.highlight();
+        
     };
 
     self.next = function() {
@@ -173,8 +175,6 @@ var app = function() {
 
     self.update_wireframe_image = function() {
 
-
-        console.log(self.vue.search_wireframe);
         $.ajax({
             type: "POST",
             url: search_wireframe_images_url,
@@ -185,6 +185,7 @@ var app = function() {
                 self.vue.currentNumber = 0;
             }
         });
+        self.highlight();
     };
 
     self.get_wireframe_by_name = function() {
@@ -199,6 +200,7 @@ var app = function() {
                 self.vue.currentNumber = 0;
             }
         });
+        self.highlight();
     };
 
     self.add_element_to_tree = function() {
@@ -267,7 +269,8 @@ var app = function() {
 
     self.highlight = function() {
         console.log("TEST");
-        this.isActive = !this.isActive;
+        //this.isActive = !this.isActive;
+        self.vue.isActive = !self.vue.isActive;
     };
 
     // Complete as needed.
