@@ -3,7 +3,8 @@
 var treeData = [
     {
         "name": "start",
-        "id": 1
+        "id": 1,
+        "image": "Blank.png"
     }
 ];
 
@@ -47,7 +48,7 @@ function renderTree() {
             var nodes = tree.nodes(root).reverse();
             var links = tree.links(nodes);
 
-            nodes.forEach(function(d) { d.y = d.depth * 180; });
+            nodes.forEach(function(d) { d.y = d.depth * 280; });
 
             var node = canvas.selectAll(".node")
                 .data(nodes)
@@ -57,7 +58,7 @@ function renderTree() {
                 .attr("transform", function (d) {
                     return "translate(" + (d.y +100) + "," + (d.x + 100) + ")";
                 });
-
+/*
             node.append("circle")
                 .attr("r", 8)
                 .attr("fill", "steelblue")
@@ -77,8 +78,34 @@ function renderTree() {
                         nodeName = "";
                         nodeId = "";
                     }
-
-
+                });
+*/
+            node.append("image")
+              //.attr("xlink:href", "../static/images/wireframes/Blank.png")
+              .attr("xlink:href", function(d) {
+                  return "../static/images/wireframes/" + d.image;
+              })
+              .attr("x", -35)
+              .attr("y", 0)
+              .attr("width", "100px")
+              .attr("height", "100px")
+                .attr("fill", "steelblue")
+                .on('click', function(d,i) {
+                    // handle events here
+                    // d - datum
+                    // i - identifier or index
+                    // this - the `<rect>` that was clicked
+                    if (d3.select(this).attr("fill") == "steelblue") {
+                        d3.selectAll(".node").selectAll("circle").attr("fill", "steelblue");
+                        d3.select(this).attr("fill", "#F05F40");
+                        nodeName = d.name;
+                        nodeId = d.id;
+                    }
+                    else {
+                        d3.select(this).attr("fill", "steelblue");
+                        nodeName = "";
+                        nodeId = "";
+                       }
                 });
 
             node.append("text")
@@ -202,6 +229,7 @@ var app = function() {
     self.add_element_to_tree = function() {
 
         var imgName = self.vue.wireframes[self.vue.currentNumber].name_readable;
+        var image = self.vue.wireframes[self.vue.currentNumber].wireframe_name;
 
         function traverse(treeArray, id) {
 
@@ -219,11 +247,12 @@ var app = function() {
                                     "name": imgName,
                                     "id": rand,
                                     "type": type,
+                                    "image": image,
                                     "children": []
                                 });
                             }
                             else
-                                treeArray.children[k].children = [ {"name": imgName, "id": rand, "type": type} ];
+                                treeArray.children[k].children = [ {"name": imgName, "id": rand, "type": type, "image": image} ];
 
                             renderTree();
 
@@ -248,6 +277,7 @@ var app = function() {
             if (!self.vue.start) {
                 treeData[0]['name'] = imgName;
                 treeData[0]['type'] = type;
+                treeData[0]['image'] = image;
                 self.vue.start = true;
             } else if (self.vue.start) {
                 if (treeData[0].children) {
@@ -257,11 +287,12 @@ var app = function() {
                         "name": imgName,
                         "id": rand,
                         "type": type,
+                        "image": image,
                         "children": []
                     });
                 }
                 else
-                    treeData[0].children = [{"name": imgName, "id": rand, "type": type}];
+                    treeData[0].children = [{"name": imgName, "id": rand, "type": type, "image": image}];
 
             }
             renderTree();
@@ -289,7 +320,7 @@ var app = function() {
             wireframe_hints: [],
             isActive: false,
             start: false
-            
+
         },
         methods: {
             get_wireframe_images: self.get_wireframe_images,
