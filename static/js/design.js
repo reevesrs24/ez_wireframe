@@ -35,10 +35,10 @@ function renderTree() {
         .attr("transform", "translate(10, 0)");
 
 
-    var tree = d3.layout.tree()
-        .size([300, 300]);
+  //  var tree = d3.layout.tree()
+     //  .size([600, 600]);
 
-        var i = 0;
+    var tree = d3.layout.tree().nodeSize([150, 150]);
 
         var root = treeData[0];
 
@@ -58,32 +58,10 @@ function renderTree() {
                 .append("g")
                 .attr("class", "node")
                 .attr("transform", function (d) {
-                    return "translate(" + (d.y +100) + "," + (d.x + 100) + ")";
+                    return "translate(" + (d.y + 325) + "," + (d.x + 325) + ")";
                 });
-/*
-            node.append("circle")
-                .attr("r", 8)
-                .attr("fill", "steelblue")
-                .on('click', function(d,i) {
-                    // handle events here
-                    // d - datum
-                    // i - identifier or index
-                    // this - the `<rect>` that was clicked
-                    if (d3.select(this).attr("fill") == "steelblue") {
-                        d3.selectAll(".node").selectAll("circle").attr("fill", "steelblue");
-                        d3.select(this).attr("fill", "#F05F40");
-                        nodeName = d.name;
-                        nodeId = d.id;
-                    }
-                    else {
-                        d3.select(this).attr("fill", "steelblue");
-                        nodeName = "";
-                        nodeId = "";
-                    }
-                });
-*/
+
             node.append("image")
-              //.attr("xlink:href", "../static/images/wireframes/Blank.png")
               .attr("xlink:href", function(d) {
                   return "../static/images/wireframes/" + d.image;
               })
@@ -91,20 +69,22 @@ function renderTree() {
               .attr("y", -40)
               .attr("width", "100px")
               .attr("height", "100px")
-                .attr("fill", "steelblue")
-                .on('click', function(d,i) {
+              .attr("class", "not-selected")
+              .attr("fill", "steelblue")
+              .on('click', function(d) {
                     // handle events here
                     // d - datum
-                    // i - identifier or index
-                    // this - the `<rect>` that was clicked
-                    if (d3.select(this).attr("fill") == "steelblue") {
-                        d3.selectAll(".node").selectAll("circle").attr("fill", "steelblue");
-                        d3.select(this).attr("fill", "#F05F40");
+                    if (d3.select(this).attr("class") == "not-selected") {
+                        d3.selectAll(".node").style("stroke", "");
+                        d3.select(this.parentNode).style("stroke", "#F05F40")
+                                                  .style("stroke-width", "1");
+                        d3.select(this).attr("class", "selected");
                         nodeName = d.name;
                         nodeId = d.id;
                     }
                     else {
-                        d3.select(this).attr("fill", "steelblue");
+                        d3.select(this.parentNode).style("stroke", "");
+                        d3.select(this).attr("class", "not-selected");
                         nodeName = "";
                         nodeId = "";
                        }
@@ -115,11 +95,9 @@ function renderTree() {
                 .attr("x", 12)
                 .attr("text-anchor", "middle")
                 .attr("cursor", "pointer")
-                .on('click', function(d, i) {
+                .on('click', function(d) {
                     // handle events here
                     // d - datum
-                    // i - identifier or index
-                    // this - the `<rect>` that was clicked
                     console.log("TEXT CLICK ");
                     //showWireframeModal(d.name, d.type, d.id);
                 })
@@ -129,7 +107,7 @@ function renderTree() {
 
             var diagonal = d3.svg.diagonal()
                 .projection(function (d) {
-                    return [d.y + 100, d.x + 100];
+                    return [d.y + 325, d.x + 325];
                 });
 
 
