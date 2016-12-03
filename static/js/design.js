@@ -25,7 +25,7 @@ function renderTree() {
     var canvas = d3.select("#wireframe-tree")
         .append("svg")
         .attr("width", 1000)
-        .attr("height", 500)
+        .attr("height", 700)
         .attr("class", "overlay")
         .call(d3.behavior.zoom().on("zoom", function () {
           canvas.attr("transform", "translate(" +  d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
@@ -48,7 +48,9 @@ function renderTree() {
             var nodes = tree.nodes(root).reverse();
             var links = tree.links(nodes);
 
-            nodes.forEach(function(d) { d.y = d.depth * 280; });
+            nodes.forEach(function(d) {
+                d.y = d.depth * 300;
+            });
 
             var node = canvas.selectAll(".node")
                 .data(nodes)
@@ -85,8 +87,8 @@ function renderTree() {
               .attr("xlink:href", function(d) {
                   return "../static/images/wireframes/" + d.image;
               })
-              .attr("x", -35)
-              .attr("y", 0)
+              .attr("x", -37)
+              .attr("y", -40)
               .attr("width", "100px")
               .attr("height", "100px")
                 .attr("fill", "steelblue")
@@ -109,8 +111,9 @@ function renderTree() {
                 });
 
             node.append("text")
-                .attr("y", -13)
-                .attr("x", -5)
+                .attr("y", -45)
+                .attr("x", 12)
+                .attr("text-anchor", "middle")
                 .attr("cursor", "pointer")
                 .on('click', function(d, i) {
                     // handle events here
@@ -128,6 +131,8 @@ function renderTree() {
                 .projection(function (d) {
                     return [d.y + 100, d.x + 100];
                 });
+
+
 
             canvas.selectAll(".link")
                 .data(links)
@@ -169,7 +174,7 @@ var app = function() {
             dataType: 'json',
             success: function (json) {
                 self.vue.wireframes = json['wireframes'];
-                self.vue.currentNumber = 0;
+                self.vue.currentNumber = 30;
             }
         });
 
@@ -311,7 +316,7 @@ var app = function() {
         unsafeDelimiters: ['!{', '}'],
         data: {
             wireframes: [],
-            currentNumber: 0,
+            currentNumber: 30,
             path: "../static/images/wireframes/",
             platform: "mobile",
             toggle_search_bool: false,

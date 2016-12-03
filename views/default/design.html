@@ -2,7 +2,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" style="background-color: #959595">
 {{block head}}
 <script>
     var get_wireframe_images_url = "{{=URL('api', 'get_wireframe_images', user_signature=True)}}";
@@ -27,7 +27,7 @@
                     <a class="page-scroll" href="{{=URL('default','index')}}">Home</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    <a class="page-scroll" href="{{=URL('default','index')}}">Logout</a>
                 </li>
             </ul>
         </div>
