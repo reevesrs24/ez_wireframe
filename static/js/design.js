@@ -99,7 +99,8 @@ function renderTree() {
                     // handle events here
                     // d - datum
                     console.log("TEXT CLICK ");
-                    //showWireframeModal(d.name, d.type, d.id);
+                     nodeId = d.id;
+                    showWireframeModal(d.image, d.type, d.id, d.name);
                 })
                 .text(function (d) {
                     return d.name;
@@ -133,10 +134,48 @@ function renderTree() {
 //Render the Tree on window load
 renderTree();
 
+/*
+    Jquery Modal Code
+
+ */
+
+$("#delete-wireframe" ).click(function() {
+
+    var uuid = nodeId;
+    console.log("DELETE " + uuid);
+
+    function traverse(treeArray, id) {
+
+        if (treeArray.children) {
+            for (var k in treeArray.children) {
+
+                if (treeArray.children[k].id === id) {
+
+                    treeArray.children.splice(k, 1);
+
+                    renderTree();
+                    break;
+
+                } else if (treeArray.children.length) {
+                    traverse(treeArray.children[k], id);
+                }
+            }
+        }
+    }
+
+    var tree = treeData[0];
+
+traverse(tree, uuid);
+});
+
+function showWireframeModal(image, type, id, name)
+{
+    $("#wireframe-img-modal").attr('src', '../static/images/wireframes/' + image);
+    $('#myModalLabel').text(name);
+    $('#myModal').modal('show');
+}
 
 //vue.js Code
-
-// This is the js for the default/index.html view.
 var app = function() {
 
     var self = {};

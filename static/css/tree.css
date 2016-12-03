@@ -20,7 +20,9 @@
     outline:5px solid #F05F40;
   }
 
-  .image {
+  .mobile-image {
 
-
+    margin-left: 25%;
+    height: 50%;
+    width: 50%;
   }
