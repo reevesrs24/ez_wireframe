@@ -21,7 +21,7 @@ def register():
 
     if (auth.user):
         redirect(URL('default', 'design'))
-        
+
     return dict(title=T('Register'), form=auth.register())
 
 def logout():
