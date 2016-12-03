@@ -175,7 +175,9 @@ function showWireframeModal(image, type, id, name)
     $('#myModal').modal('show');
 }
 
-//vue.js Code
+/*
+    vue.js Code
+*/
 var app = function() {
 
     var self = {};
