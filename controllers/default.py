@@ -18,6 +18,10 @@ def login():
 
 def register():
     auth.settings.register_next = URL('default', 'design')
+
+    if (auth.user):
+        redirect(URL('default', 'design'))
+        
     return dict(title=T('Register'), form=auth.register())
 
 def logout():

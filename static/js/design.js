@@ -71,6 +71,7 @@ function renderTree() {
               .attr("height", "100px")
               .attr("class", "not-selected")
               .attr("fill", "steelblue")
+              .attr("cursor", "pointer")
               .on('click', function(d) {
                     // handle events here
                     // d - datum
