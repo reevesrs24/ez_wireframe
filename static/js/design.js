@@ -90,7 +90,7 @@ function renderTree() {
                     // d - datum
                     // i - identifier or index
                     // this - the `<rect>` that was clicked
-                    //console.log("TEXT CLICK ");
+                    console.log("TEXT CLICK ");
                     //showWireframeModal(d.name, d.type, d.id);
                 })
                 .text(function (d) {
@@ -133,7 +133,6 @@ var app = function() {
 
     Vue.config.silent = false; // show all warnings
 
-
     self.get_wireframe_images = function() {
 
         $.ajax({
@@ -147,8 +146,7 @@ var app = function() {
             }
         });
 
-    self.highlight();
-        
+
     };
 
     self.next = function() {
@@ -185,7 +183,6 @@ var app = function() {
                 self.vue.currentNumber = 0;
             }
         });
-        self.highlight();
     };
 
     self.get_wireframe_by_name = function() {
@@ -200,7 +197,6 @@ var app = function() {
                 self.vue.currentNumber = 0;
             }
         });
-        self.highlight();
     };
 
     self.add_element_to_tree = function() {
@@ -249,27 +245,31 @@ var app = function() {
         if (nodeId == "1") {
             var rand = Math.floor(Math.random() * (100000 - 0) + 0);
 
-            if (treeData[0].children) {
+            if (!self.vue.start) {
+                treeData[0]['name'] = imgName;
+                treeData[0]['type'] = type;
+                self.vue.start = true;
+            } else if (self.vue.start) {
+                if (treeData[0].children) {
 
-                console.log("RANDOM " + rand);
-                treeData[0].children.push({
-                    "name": imgName,
-                    "id": rand,
-                    "type": type,
-                    "children": []
-                });
+                    console.log("RANDOM " + rand);
+                    treeData[0].children.push({
+                        "name": imgName,
+                        "id": rand,
+                        "type": type,
+                        "children": []
+                    });
+                }
+                else
+                    treeData[0].children = [{"name": imgName, "id": rand, "type": type}];
+
             }
-            else
-                treeData[0].children = [{"name": imgName, "id": rand, "type": type}];
-
             renderTree();
         }
     };
 
 
     self.highlight = function() {
-        console.log("TEST");
-        //this.isActive = !this.isActive;
         self.vue.isActive = !self.vue.isActive;
     };
 
@@ -287,9 +287,9 @@ var app = function() {
             toggle_list_bool: false,
             search_wireframe: "",
             wireframe_hints: [],
-            isActive: false
-
-
+            isActive: false,
+            start: false
+            
         },
         methods: {
             get_wireframe_images: self.get_wireframe_images,
@@ -301,7 +301,6 @@ var app = function() {
             get_wireframe_by_name: self.get_wireframe_by_name,
             add_element_to_tree: self.add_element_to_tree,
             highlight: self.highlight
-
 
         }
 
