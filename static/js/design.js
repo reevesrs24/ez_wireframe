@@ -230,11 +230,10 @@ var app = function() {
         $.ajax({
             type: "POST",
             url: search_wireframe_images_url,
-            data: {search_wireframe: self.vue.search_wireframe},
+            data: {search_wireframe: self.vue.search_wireframe, platform: self.vue.platform},
             dataType: 'json',
             success: function (json) {
                 self.vue.wireframe_hints = json['wireframes'];
-                self.vue.currentNumber = 0;
             }
         });
     };

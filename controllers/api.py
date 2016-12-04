@@ -18,7 +18,7 @@ def get_wireframe_images():
 def update_wireframe_image():
 
     name = '\"' + request.vars.search_wireframe + "%" + '\"'
-    search = 'SELECT * FROM wireframes WHERE name_readable LIKE ' + name + ';'
+    search = 'SELECT * FROM wireframes WHERE platform = \'' + request.vars.platform  + '\' AND name_readable LIKE ' + name + ';'
 
     wireframes = db.executesql(search)
 
