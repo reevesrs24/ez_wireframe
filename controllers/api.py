@@ -29,7 +29,10 @@ def update_wireframe_image():
 
 def get_wireframe_by_name():
 
-    wireframes = db(db.wireframes.name_readable == request.vars.wireframe_name).select()
+    if (request.vars.wireframe_name is ""):
+        wireframes = db().select(db.wireframes.ALL)
+    else:
+        wireframes = db(db.wireframes.name_readable == request.vars.wireframe_name).select()
 
     if wireframes is None:
         return 'None'
