@@ -14,6 +14,10 @@ var nodeName = "";
 var nodeId = "";
 
 //D3.js script
+/*
+    Boilder plate obtained from D3noob
+    http://www.d3noob.org/2014/01/tree-diagrams-in-d3js_11.html
+ */
 function renderTree() {
     console.log("RENDERING");
 
@@ -34,9 +38,6 @@ function renderTree() {
         .append("g")
         .attr("transform", "translate(10, 0)");
 
-
-  //  var tree = d3.layout.tree()
-     //  .size([600, 600]);
 
     var tree = d3.layout.tree().nodeSize([150, 150]);
 
@@ -176,6 +177,7 @@ function showWireframeModal(image, type, id, name)
     $('#myModal').modal('show');
 }
 
+
 /*
     vue.js Code
 */
@@ -260,7 +262,6 @@ var app = function() {
 
             if (treeArray.children) {
                 for (var k in treeArray.children) {
-                        console.log("NAME " + treeArray.children[k].id);
 
                         if (treeArray.children[k].id === id) {
 
@@ -307,7 +308,6 @@ var app = function() {
             } else if (self.vue.start) {
                 if (treeData[0].children) {
 
-                    console.log("RANDOM " + rand);
                     treeData[0].children.push({
                         "name": imgName,
                         "id": rand,
@@ -327,6 +327,33 @@ var app = function() {
 
     self.highlight = function() {
         self.vue.isActive = !self.vue.isActive;
+    };
+
+    self.save_tree_data = function() {
+
+        var data = treeData;
+
+        $.ajax({
+            type: "POST",
+            url: save_tree_data_url,
+            data: {tree_data: data},
+            dataType: 'json',
+            success: function (json) {
+
+            }
+        });
+    };
+
+
+    self.get_user_tree_data = function() {
+
+
+         $.get(get_user_tree_data_url, function(json, status){
+                console.log("tree " + json['tree_data'].tree_data);
+                treeData = JSON.parse(json['tree_data'].tree_data);
+                console.log("tree " + treeData);
+            });
+
     };
 
     // Complete as needed.
@@ -356,14 +383,19 @@ var app = function() {
             update_wireframe_image: self.update_wireframe_image,
             get_wireframe_by_name: self.get_wireframe_by_name,
             add_element_to_tree: self.add_element_to_tree,
-            highlight: self.highlight
+            highlight: self.highlight,
+            save_tree_data: self.save_tree_data,
+            get_user_tree_data: self.get_user_tree_data
 
         }
 
     });
 
+
+    //self.get_user_tree_data();
     //Load Images on when page is rendered
     self.get_wireframe_images();
+
 
     return self;
 };
